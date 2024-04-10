@@ -1,0 +1,219 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+button,
+h1,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  font-family: Verdana, '돋움', dotum, sans-serif;
+}
+
+/* custom-CSS */
+:root {
+  --light-gray: #f4f4f4;
+  --semi-black: #424a5a;
+  --sky-blue: #5cd3f8;
+}
+
+.header {
+  padding: 20px;
+  background-color: var(--semi-black);
+}
+
+.title {
+  color: var(--sky-blue);
+  font-size: 90px;
+  font-family: Verdana, '돋움', dotum, sans-serif;
+
+  text-align: center;
+}
+
+/* main css */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0 100px 0;
+  background-color: var(--light-gray);
+  align-items: center;
+}
+
+.announce {
+  font-size: 40px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 8px;
+
+  margin: 50px 0;
+}
+.grid-item {
+  background-color: white;
+  text-align: center;
+  line-height: 100px;
+}
+
+.start-btn {
+  font-size: 40px;
+  color: white;
+
+  border-radius: 10px;
+  padding: 15px;
+  background-color: var(--semi-black);
+
+  transition: transform 0.3s ease;
+}
+
+.start-btn:hover {
+  transform: scale(1.1); /* 호버 시 크기를 1.1배로 확대합니다. */
+}
+
+/* footer-css */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-gray);
+
+  font-size: 20px;
+
+  padding: 30px 0;
+}
+
+.fa-brands {
+  margin: 5px;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
+}
