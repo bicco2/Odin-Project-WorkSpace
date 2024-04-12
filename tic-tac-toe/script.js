@@ -15,7 +15,7 @@ const Player = (nickname) => {
 const boardController = (function () {
   const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
-  function updateCell(index, nickname) {
+  function updateBoard(index, nickname) {
     if (gameBoard[index] === '') {
       gameBoard[index] = nickname;
       return true;
@@ -34,7 +34,7 @@ const boardController = (function () {
     return gameBoard[index];
   }
 
-  return { updateCell, resetGameBoard, getCell };
+  return { updateBoard, resetGameBoard, getCell };
 })();
 
 /* ----------------------  */
@@ -50,22 +50,19 @@ const uiController = (function () {
     cellElement.addEventListener('click', (e) => {
       const cellIndex = e.target.dataset.value;
       const currentPlayer = gameController.getCurrentPlayer();
-      const updateCheck = boardController.updateCell(cellIndex, currentPlayer);
+      const updateCheck = boardController.updateBoard(cellIndex, currentPlayer);
       if (updateCheck && !gameController.getEndGame()) {
-        updateBoard();
+        updateBoardUI();
         gameController.nextRound(Number(cellIndex));
       }
     });
   });
 
   restartBtn.addEventListener('click', () => {
-    boardController.resetGameBoard();
-    updateBoard();
     gameController.resetRound();
-    changeAnnounce(gameController.getEndGame());
   });
 
-  function updateBoard() {
+  function updateBoardUI() {
     for (let i = 0; i < cellElements.length; i++) {
       cellElements[i].textContent = boardController.getCell(i);
     }
@@ -81,7 +78,7 @@ const uiController = (function () {
     announceElement.textContent = `DRAW.`;
   }
 
-  return { changeAnnounce, updateBoard, drawAnnounce };
+  return { changeAnnounce, updateBoardUI, drawAnnounce };
 })();
 
 /* ----------------------  */
@@ -139,6 +136,10 @@ const gameController = (function () {
   function resetRound() {
     endGame = false;
     round = 1;
+
+    boardController.resetGameBoard();
+    uiController.updateBoardUI();
+    uiController.changeAnnounce(gameController.getEndGame());
   }
 
   return { nextRound, getCurrentPlayer, checkWinner, getEndGame, resetRound };
