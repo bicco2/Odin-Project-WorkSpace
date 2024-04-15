@@ -1,3 +1,5 @@
+import './style.css';
+
 const Player = (nickname) => {
   this.nickname = nickname;
 
